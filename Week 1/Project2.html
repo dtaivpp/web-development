@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>Programming Project - Binary Operator</title>
+</head>
+<style>
+  table{
+    text-align: center;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  td{
+    border: 1px solid black;
+    padding: 5px;
+  }
+  h1,
+  h2,
+  h3{
+    padding-top: 1.5em;
+  }
+  .row{
+    margin-bottom: 2em;
+  }
+  .footer {
+    padding-top: 1.5rem;
+    color: #777;
+    border-top: .05rem solid #e5e5e5;
+    border-top-width: 0.05rem;
+    border-top-style: solid;
+    border-top-color: rgb(229, 229, 229);
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">Binary Operators</h1>
+      <h2>Intro</h2>
+      <p>
+        Binary operators help describe often complicated logic using the most 
+        simple form possible. These operators are found in all sorts of contexts from
+        the study of Logic to the world of computer programming. <br><br>
+
+        Logicians use these operations to break down arguments into more simple constructs.
+        By doing this they can see from an almost mathematical perspective allowing for them 
+        to identify logical fallacies. These fallacies show if the argument is even valid before
+        they try and make counter arguments.<br><br>
+
+        Businesses may use logic to represent complicated processes. These can help them define
+        in a repeatable manner business logic in a means that others can easily understand. Also,
+        this can help with process automation allowing for businesses to run more efficiently. <br>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>AND</h3>
+        <p>The and operator returns true only when both values are true. 
+            This is useful for when both conditions need to evaluate to 
+            true for the statement to be valid. </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>B</em></td>
+            <td><em>A AND B</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </table>
+        <h3>NOT</h3>
+        <p>The not operator simply returns the opposite of its input. 
+          This can be useful when you simply want to find out if somthing is not true
+          within an if statement. 
+        </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>Not A</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-lg-6">
+        <h3>OR</h3>
+        <p>The or operater returns true except when both of the values are false.
+            Or comes in handy when any one of a set of values in a set could be true.
+        </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>B</em></td>
+            <td><em>A AND B</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </table>
+        <h3>XOR</h3>
+        <p>XOR is a a more complicated operator. 
+            It returns true only if the inputs are opposite of one another. 
+            Another way of describing this is as an either or gate. 
+        </p>
+        <table align="center">
+            <tr>
+              <td><em>A</em></td>
+              <td><em>B</em></td>
+              <td><em>A AND B</em></td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="footer"><p>Project by David Tippett</p></div>
+  </div>
+</body>
+</html>
