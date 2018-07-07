@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>Programming Project - Binary Operator</title>
+</head>
+<script>
+  var currentOperation = "";
+  $(document).ready(function (){
+    $(":checkbox").change(function (){
+      if(this.checked){
+        this.value = 1;
+        $("#input_" + this.id).text(1);
+        calculateResult();
+      }
+      else{
+        this.value = 0;
+        $("#input_" + this.id).text(0);
+        calculateResult();
+      }
+
+    });
+  });
+
+  function processClick(id){
+    $("#" + id).addClass("btn-success");
+    if(currentOperation != id){
+      $("#" + currentOperation).removeClass("btn-success");
+    }
+    currentOperation = id; 
+    calculateResult();  
+  }
+
+  function calculateResult(){
+    var result;
+
+    if (currentOperation === "or"){
+      result = ($('#a').is(':checked')) || ($("#b").is(":checked"));
+    } else if (currentOperation === "and"){
+      result = ($('#a').is(':checked')) && ($("#b").is(":checked"));
+    } else if (currentOperation === "not"){
+      result = !($('#a').is(':checked'));
+    } else if (currentOperation === "xor"){
+      result = ($('#a').is(':checked')) ^ ($("#b").is(":checked"));
+    }
+
+    result = (result ? 1 : 0);
+    $('#output').text(result);
+  }
+
+</script>
+<style>
+  table{
+    text-align: center;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  td{
+    border: 1px solid black;
+    padding: 5px;
+  }
+  h1,
+  h2,
+  h3{
+    padding-top: 1.5em;
+  }
+  .row{
+    margin-bottom: 2em;
+  }
+  .footer {
+    padding-top: 1.5rem;
+    color: #777;
+    border-top: .05rem solid #e5e5e5;
+    border-top-width: 0.05rem;
+    border-top-style: solid;
+    border-top-color: rgb(229, 229, 229);
+  }
+  .card{
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .card-block th{
+    padding: 4px;
+  }
+  .btn{
+    background-color: lightsteelblue !important;
+    border-color: lightsteelblue !important;
+  }
+  .btn-success{
+    background-color: mediumorchid !important;
+    border-color: mediumorchid !important;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">Binary Operators</h1>
+      <h2>Intro</h2>
+      <p>
+        Binary operators help describe often complicated logic using the most 
+        simple form possible. These operators are found in all sorts of contexts from
+        the study of Logic to the world of computer programming. <br><br>
+
+        Logicians use these operations to break down arguments into more simple constructs.
+        By doing this they can see from an almost mathematical perspective allowing for them 
+        to identify logical fallacies. These fallacies show if the argument is even valid before
+        they try and make counter arguments.<br><br>
+
+        Businesses may use logic to represent complicated processes. These can help them define
+        in a repeatable manner business logic in a means that others can easily understand. Also,
+        this can help with process automation allowing for businesses to run more efficiently. <br>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>AND</h3>
+        <p>The and operator returns true only when both values are true. 
+            This is useful for when both conditions need to evaluate to 
+            true for the statement to be valid. </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>B</em></td>
+            <td><em>A AND B</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </table>
+        <h3>NOT</h3>
+        <p>The not operator simply returns the opposite of its input. 
+          This can be useful when you simply want to find out if somthing is not true
+          within an if statement. 
+        </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>Not A</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-lg-6">
+        <h3>OR</h3>
+        <p>The or operater returns true except when both of the values are false.
+            Or comes in handy when any one of a set of values in a set could be true.
+        </p>
+        <table align="center">
+          <tr>
+            <td><em>A</em></td>
+            <td><em>B</em></td>
+            <td><em>A AND B</em></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </table>
+        <h3>XOR</h3>
+        <p>XOR is a a more complicated operator. 
+            It returns true only if the inputs are opposite of one another. 
+            Another way of describing this is as an either or gate. 
+        </p>
+        <table align="center">
+            <tr>
+              <td><em>A</em></td>
+              <td><em>B</em></td>
+              <td><em>A AND B</em></td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+        </table>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="card" style="max-width: 20rem;">
+          <div class="card-header"><h3>Demo of Operations</h3></div>
+          <div class="card-block">
+              <table align="center">
+                <th><button class="btn" onclick="processClick(this.id)" id='or'>OR</button></th>
+                <th><button class="btn" onclick="processClick(this.id)" id='and'>AND</button></th>
+                <th><button class="btn" onclick="processClick(this.id)" id='not'>NOT</button></th>
+                <th><button class="btn" onclick="processClick(this.id)" id='xor'>XOR</button></th>
+              </table>
+            <br>
+            <table align="center">
+              <tr>
+                <th>Input A</th>
+                <th>Input B</th>
+                <th>Output</th>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" name="checkbox" id="a">
+                  <label id="input_a">0</label>
+                </td>
+                <td>
+                  <input type="checkbox" name="checkbox" id="b" value="0">
+                  <label id="input_b">0</label>
+                </td>
+                <td>
+                  <label id='output'></label>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><p>Project by David Tippett</p></div>
+  </div>
+</body>
+</html>
