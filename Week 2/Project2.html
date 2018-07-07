@@ -12,33 +12,56 @@
 <script>
   var currentOperation = "";
   $(document).ready(function (){
+    // Sets listeners on all of the checkboxes on dom load
     $(":checkbox").change(function (){
+      
+      // If it is checked it sets the label to 1
+      // Otherwise it sets it to 0
       if(this.checked){
         this.value = 1;
         $("#input_" + this.id).text(1);
-        calculateResult();
-      }
-      else{
+      } else {
         this.value = 0;
         $("#input_" + this.id).text(0);
-        calculateResult();
       }
 
+      // Recalculate current operation
+      calculateResult();
     });
   });
 
+  // Handles logic when button is clicked
   function processClick(id){
+    // When a button is clicked add the success class
     $("#" + id).addClass("btn-success");
+
+    // If the button clicked was not the last selected
     if(currentOperation != id){
+      // Remove the success from the previous button 
       $("#" + currentOperation).removeClass("btn-success");
+
+      // It the button was the not button we will
+      // hide the column for input b
+      if(id === "not"){
+        $('#b_header').addClass('hidden-xs-up');
+        $('#b_cell').addClass('hidden-xs-up');
+      } else if (currentOperation === "not"){
+        $('#b_header').removeClass('hidden-xs-up');
+        $('#b_cell').removeClass('hidden-xs-up');
+      }
     }
+    
+    // Set the global current operation to the id and 
+    // Calculate the output
     currentOperation = id; 
     calculateResult();  
   }
 
+  // Calculates the output of the event
   function calculateResult(){
     var result;
-
+    // Checks the currentOperation and performes the logic
+    // where checked = true
     if (currentOperation === "or"){
       result = ($('#a').is(':checked')) || ($("#b").is(":checked"));
     } else if (currentOperation === "and"){
@@ -48,8 +71,10 @@
     } else if (currentOperation === "xor"){
       result = ($('#a').is(':checked')) ^ ($("#b").is(":checked"));
     }
-
+    
+    // Converts the boolian result into a 1 or 0 for output
     result = (result ? 1 : 0);
+    // Output the result
     $('#output').text(result);
   }
 
@@ -91,6 +116,7 @@
   .btn{
     background-color: lightsteelblue !important;
     border-color: lightsteelblue !important;
+    margin-top: 5px;
   }
   .btn-success{
     background-color: mediumorchid !important;
@@ -242,17 +268,15 @@
         <div class="card" style="max-width: 20rem;">
           <div class="card-header"><h3>Demo of Operations</h3></div>
           <div class="card-block">
-              <table align="center">
-                <th><button class="btn" onclick="processClick(this.id)" id='or'>OR</button></th>
-                <th><button class="btn" onclick="processClick(this.id)" id='and'>AND</button></th>
-                <th><button class="btn" onclick="processClick(this.id)" id='not'>NOT</button></th>
-                <th><button class="btn" onclick="processClick(this.id)" id='xor'>XOR</button></th>
-              </table>
+                <button class="btn" onclick="processClick(this.id)" id='or'>OR</button>
+                <button class="btn" onclick="processClick(this.id)" id='and'>AND</button>
+                <button class="btn" onclick="processClick(this.id)" id='not'>NOT</button>
+                <button class="btn" onclick="processClick(this.id)" id='xor'>XOR</button>
             <br>
             <table align="center">
               <tr>
                 <th>Input A</th>
-                <th>Input B</th>
+                <th id="b_header">Input B</th>
                 <th>Output</th>
               </tr>
               <tr>
@@ -260,7 +284,7 @@
                   <input type="checkbox" name="checkbox" id="a">
                   <label id="input_a">0</label>
                 </td>
-                <td>
+                <td id="b_cell">
                   <input type="checkbox" name="checkbox" id="b" value="0">
                   <label id="input_b">0</label>
                 </td>
