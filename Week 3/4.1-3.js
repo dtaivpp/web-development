@@ -50,13 +50,16 @@ function outputValue(message){
 
 function valid(convertinToGallons, quantity) {
   if (convertinToGallons){
-    if (quantity > 4000){
+    // If we are converting to gallons
+    if (quantity > 4000 && quantity >= 0){
       alert("Quantity must be less than 4000 liters");
       document.getElementById('quantity').value = '';
       return false;
     }
+    
   } else {
-    if (quantity > 1000) {
+    // If we are converting to liters
+    if (quantity > 1000 && quantity >= 0) {
       alert("Quantity must be less than 1000 gallons");
       document.getElementById('quantity').value = '';
       return false;
