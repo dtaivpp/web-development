@@ -25,3 +25,7 @@ image{
 .login-card{
   margin-top: 1em;
 }
+
+td {
+  padding: 5px;
+}
