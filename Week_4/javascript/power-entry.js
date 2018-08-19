@@ -8,9 +8,27 @@ $(document).ready(function (){
     }
   });
 
-  var plantConsumption = [];
-  saveToLocal(plantConsumption);
-
+  try {
+    var plantConsumption = JSON.parse(localStorage.getItem("plantConsumption"));
+  } catch (error) {
+    /**
+     * Google Browser error constant Checker
+     */
+    if (window.navigator.vendor ==="Google Inc"){
+      if (error == DOMException.QUOTA_EXCEEDED_ERR){
+        alert("Error: Local limit exceeded");
+      }
+    } else if (error = QUOTA_EXCEEDED_ERR){
+      alert("Error: Local limit exceeded");
+    }
+    console.log(error);
+  }
+  if (plantConsumption === null){
+    var plantConsumption = [];
+    saveToLocal(plantConsumption);
+  } else {
+    renderTable();
+  }
 });
 
 function addEntry(){
